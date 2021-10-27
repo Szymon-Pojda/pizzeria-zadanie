@@ -175,6 +175,7 @@
             if (!option.default == true) {
               // add option price to price variable
               price += option.price;
+              console.log(option.price);
             }
           } else {
             // check if the option is default
