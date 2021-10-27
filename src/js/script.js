@@ -61,9 +61,10 @@
       thisProduct.data = data;
 
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
-
-
+      thisProduct.initOrderForm();
+      thisProduct.processOrder();
 
       console.log('new Product:', thisProduct);
     }
@@ -108,7 +109,7 @@
 
         /* find active product (product that has active class) */
         const activeProduct = document.querySelectorAll(select.all.menuProductsActive);
-        
+        console.log(select.all.menuProductsActive);
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         for (let active of activeProduct) {
 
@@ -120,7 +121,37 @@
         /* toggle active class on thisProduct.element */
 
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
+
       });
+
+    }
+
+    initOrderForm() {
+      const thisProduct = this;
+
+      thisProduct.form.addEventListener('submit', function(event){
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
+      
+      for(let input of thisProduct.formInputs){
+        input.addEventListener('change', function(){
+          thisProduct.processOrder();
+        });
+      }
+      
+      thisProduct.cartButton.addEventListener('click', function(event){
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
+
+    }
+
+    processOrder() {
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log('formData', formData);
 
     }
 
