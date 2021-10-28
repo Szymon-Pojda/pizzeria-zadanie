@@ -65,6 +65,7 @@
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
       thisProduct.processOrder();
+      thisProduct.initAmountWidget();
 
       console.log('new Product:', thisProduct);
     }
@@ -149,6 +150,12 @@
 
     }
 
+    initAmountWidget() {
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+    }
+
     processOrder() {
       const thisProduct = this;
 
@@ -173,8 +180,8 @@
           const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
           const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
-          if(optionImage){
-            if(optionSelected){
+          if (optionImage) {
+            if (optionSelected) {
               optionImage.classList.add(classNames.menuProduct.wrapperActive);
             }
             else {
@@ -203,20 +210,58 @@
       thisProduct.priceElem.innerHTML = price;
     }
 
-    initAmountWidget(){
-      const thisProduct = this;
 
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-    }
   }
 
-  class AmountWidget{
-    constructor(element){
+  class AmountWidget {
+    constructor(element) {
       const thisWidget = this;
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
+
+      thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
     }
+
+    getElements(element) {
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
+
+    setValue(value) {
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      /* TODO: Add validation */
+
+      if (thisWidget.value !== newValue && !isNaN(newValue)) {
+        thisWidget.value = newValue;
+      }
+    }
+
+    initActions(){
+      const thisWidget = this;
+
+      thisWidget.input.addEventListener('change', function (){
+        thisWidget.setValue(thisWidget.input.value);
+      });
+      thisWidget.linkDecrease.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget -1);
+      });
+      thisWidget.linkIncrease.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget +1);
+      });
+    }
+
   }
 
 
