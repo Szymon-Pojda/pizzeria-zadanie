@@ -461,5 +461,4 @@
 
 
   app.init();
-  app.initCart();
 }
