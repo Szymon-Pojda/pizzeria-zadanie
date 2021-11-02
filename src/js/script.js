@@ -258,7 +258,7 @@
     addToCart() {
       const thisProduct = this;
 
-      app.cart.add(thisProduct.prepareCartProductParams());
+      app.cart.add(thisProduct.prepareCartProduct());
     }
 
     prepareCartProduct() {
@@ -271,7 +271,7 @@
       productSummary.amount = thisProduct.amountWidget.value;
       productSummary.priceSingle = thisProduct.priceSingle;
       productSummary.price = productSummary.priceSingle * productSummary.amount;
-      productSummary.params = thisProduct.prepareCartProductParams;
+      productSummary.params = thisProduct.prepareCartProductParams();
 
       return productSummary;
     }
