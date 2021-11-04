@@ -425,7 +425,7 @@
       /* find menu container */
       thisCart.dom.productList.appendChild(generatedDOM);
 
-      thisCart.product.push(new CartProduct(menuProduct, generatedDOM));
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       thisCart.update();
     }
 
