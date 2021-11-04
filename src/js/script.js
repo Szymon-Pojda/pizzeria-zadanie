@@ -453,7 +453,10 @@
         thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
         thisCart.dom.totalNumber.innerHTML = totalNumber;
         thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
-        thisCart.dom.totalPriceBottom.innerHTML = thisCart.totalPrice;
+
+        for (let element of thisCart.dom.totalPrice) {
+          element.innerHTML = thisCart.totalPrice;
+        }
       }
       console.log('total', thisCart.totalPrice);
     }
@@ -474,7 +477,7 @@
       thisCartProduct.id = menuProduct.Id;
       thisCartProduct.amount = menuProduct.amount;
       thisCartProduct.priceSingle = menuProduct.priceSingle;
-      thisCartProduct.price = menuProduct.preice;
+      thisCartProduct.price = menuProduct.price;
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
