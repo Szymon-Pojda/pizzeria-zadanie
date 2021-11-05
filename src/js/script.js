@@ -489,7 +489,7 @@
 
 
       const payload = {
-        address: thisCart.dom.address.vaalue, /* adres klienta wpisany w koszyku,*/
+        address: thisCart.dom.address.value, /* adres klienta wpisany w koszyku,*/
         phone: thisCart.dom.phone.value, /* numer telefonu wpisany w koszyku, */
         totalPrice: thisCart.totalPrice, /* całkowita cena za zamówienie,*/
         subtotalPrice: thisCart.subtotalPrice, /*cena całkowita - koszt dostawy,*/
