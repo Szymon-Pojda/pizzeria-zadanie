@@ -401,6 +401,9 @@
       thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
       thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
+      thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
+      thisCart.dom.phone = thisCart.dom.wrapper.querySelector(select.cart.phone);
+      thisCart.dom.address = thisCart.dom.wrapper.querySelector(select.cart.address);
     }
 
     initActions() {
@@ -416,6 +419,11 @@
 
       thisCart.dom.productList.addEventListener('remove', function (event) {
         thisCart.remove(event.detail.cartProduct);
+      });
+
+      thisCart.dom.form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        thisCart.sendOrder();
       });
     }
 
@@ -440,24 +448,24 @@
 
       const deliveryFee = settings.cart.defaultDeliveryFee;
 
-      let totalNumber = 0;
-      let subtotalPrice = 0;
+      thisCart.totalNumber = 0;
+      thisCart.subtotalPrice = 0;
 
       console.log('products', thisCart.products);
 
       for (let product of thisCart.products) {
         console.log('product', product.id);
-        totalNumber += product.amount;
-        subtotalPrice += product.price;
+        thisCart.totalNumber += product.amount;
+        thisCart.subtotalPrice += product.price;
       }
 
-      if (totalNumber == 0) {
+      if (thisCart.totalNumber == 0) {
         thisCart.totalPrice = 0;
       } else {
-        thisCart.totalPrice = subtotalPrice + deliveryFee;
+        thisCart.totalPrice = thisCart.subtotalPrice + deliveryFee;
         thisCart.dom.deliveryFee.innerHTML = deliveryFee;
-        thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
-        thisCart.dom.totalNumber.innerHTML = totalNumber;
+        thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+        thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
         thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
 
         for (let element of thisCart.dom.totalPrice) {
@@ -473,6 +481,41 @@
       thisCart.products.splice(thisCart.products.indexOf(cartProduct), 1);
       thisCart.update();
       cartProduct.dom.wrapper.remove();
+    }
+    sendOrder() {
+      const thisCart = this;
+
+      const url = settings.db.url + '/' + settings.db.orders;
+
+
+      const payload = {
+        address: thisCart.dom.address.vaalue, /* adres klienta wpisany w koszyku,*/
+        phone: thisCart.dom.phone.value, /* numer telefonu wpisany w koszyku, */
+        totalPrice: thisCart.totalPrice, /* całkowita cena za zamówienie,*/
+        subtotalPrice: thisCart.subtotalPrice, /*cena całkowita - koszt dostawy,*/
+        totalNumber: thisCart.totalNumber, /*całkowita liczba sztuk,*/
+        deliveryFee: 20, /*koszt dostawy,*/
+        products: [], /*tablica obecnych w koszyku produktów */
+      };
+
+      for (let prod of thisCart.products) {
+        payload.products.push(prod.getData());
+      }
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+
+      fetch(url, options)
+        .then(function (response) {
+          return response.json();
+        }).then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
+        });
     }
   }
 
@@ -539,6 +582,23 @@
       });
 
     }
+
+    getData() {
+      const thisCartProduct = this;
+
+      const product = [];
+
+      product.id = thisCartProduct.id;
+      product.amount = thisCartProduct.amountWidget.value;
+      product.priceSingle = thisCartProduct.priceSingle;
+      product.price = thisCartProduct.price;
+      product.params = thisCartProduct.params;
+
+      console.log(thisCartProduct);
+      console.log(product);
+
+      return product;
+    }
   }
 
 
@@ -594,7 +654,7 @@
       console.log('templates:', templates);
 
       thisApp.initData();
-      
+
       thisApp.initCart();
     },
 
