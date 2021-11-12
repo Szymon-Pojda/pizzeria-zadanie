@@ -8,7 +8,7 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
 
-    thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    thisApp.navLinks = document.querySelectorAll(select.widgets.nav.links);
 
     thisApp.activetePage(thisApp.pages[0].id);
 
