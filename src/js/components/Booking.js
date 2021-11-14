@@ -1,6 +1,7 @@
 import { templates, select, } from '../settings.js';
 import AmountWidget from './AmountWidget.js';
-
+import DatePicker from './DatePicker.js';
+import HourPicker from './HourPicker.js';
 
 class Booking {
   constructor(element) {
@@ -29,9 +30,9 @@ class Booking {
 
     thisBooking.dom.hoursAmount = element.querySelector(select.widgets.booking.hoursAmount);
 
-    //thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
 
-    //thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
   }
 
   initWidgets () {
@@ -47,15 +48,15 @@ class Booking {
     thisBooking.dom.hoursAmount.addEventListener('updated', function () {
     });
 
-    //hisBooking.datePicker = new AmountWidget(thisBooking.dom.datePicker);
+    thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
 
-    //thisBooking.dom.datePicker.addEventListener('updated', function () {
-    // });
+    thisBooking.dom.datePicker.addEventListener('updated', function () {
+    });
 
-    // thisBooking.hourPicker = new AmountWidget(thisBooking.dom.hourPicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
-    //thisBooking.dom.hourPicker.addEventListener('updated', function () {
-    //});
+    thisBooking.dom.hourPicker.addEventListener('updated', function () {
+    });
   }
 }
 
