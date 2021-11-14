@@ -23,9 +23,9 @@ class Booking {
     /* generated HTML to wrapper.innerHTML*/
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
 
-    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.peopleAmount = element.querySelector(select.booking.peopleAmount);
 
-    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.hoursAmount = element.querySelector(select.booking.hoursAmount);
   }
 
   initWidget () {
