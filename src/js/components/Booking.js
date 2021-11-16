@@ -30,9 +30,9 @@ class Booking {
 
     thisBooking.dom.hoursAmount = element.querySelector(select.widgets.booking.hoursAmount);
 
-    thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.datePickerWrapper = element.querySelector(select.widgets.datePicker);
 
-    thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.hourPickerWrapper = element.querySelector(select.widgets.hourPicker);
   }
 
   initWidgets () {
