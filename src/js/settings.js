@@ -29,8 +29,7 @@ export const select = {
       input: 'input.amount', // CODE CHANGED
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
-    },
-    widgets: {
+    
       datePicker: {
         wrapper: '.date-picker',
         input: `input[name="date"]`,

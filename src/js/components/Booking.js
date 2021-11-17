@@ -7,7 +7,6 @@ import HourPicker from './HourPicker.js';
 class Booking {
   constructor(element) {
     const thisBooking = this;
-
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
@@ -37,11 +36,11 @@ class Booking {
     };
 
     const urls = {
-      booking:        settings.db.url + '/' + settings.db.booking 
+      booking:        settings.db.url + '/' + settings.db.bookings 
                                       + '?' + params.booking.join('&'),
-      eventsCurrent:  settings.db.url + '/' + settings.db.event   
+      eventsCurrent:  settings.db.url + '/' + settings.db.events   
                                       + '?' + params.eventsCurrent.join('&'),
-      eventsRepeat:   settings.db.url + '/' + settings.db.event   
+      eventsRepeat:   settings.db.url + '/' + settings.db.events   
                                       + '?' + params.eventsRepeat.join('&'),
 
 
@@ -107,7 +106,7 @@ class Booking {
     thisBooking.dom.hoursAmount.addEventListener('updated', function () {
     });
 
-    thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
+    thisBooking.datePicker =  DatePicker(thisBooking.dom.datePicker);
 
     thisBooking.dom.datePicker.addEventListener('updated', function () {
     });
