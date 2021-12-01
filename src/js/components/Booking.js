@@ -88,7 +88,7 @@ class Booking {
 
     thisBooking.dom.hoursAmount = element.querySelector(select.widgets.booking.hoursAmount);
 
-    thisBooking.dom.datePickerWrapper = element.querySelector(select.widgets.datePicker);
+    thisBooking.dom.datePickerWrapper = element.querySelector(select.datePicker);
 
     thisBooking.dom.hourPickerWrapper = element.querySelector(select.widgets.hourPicker);
   }
@@ -106,7 +106,7 @@ class Booking {
     thisBooking.dom.hoursAmount.addEventListener('updated', function () {
     });
 
-    thisBooking.datePicker =  DatePicker(thisBooking.dom.datePicker);
+    thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
 
     thisBooking.dom.datePicker.addEventListener('updated', function () {
     });
