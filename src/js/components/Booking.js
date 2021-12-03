@@ -175,14 +175,13 @@ class Booking {
 
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
 
-    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.widgets.booking.tables);
 
-    thisBooking.dom.tables = element.querySelectorAll(select.widgets.booking.tables);
-    thisBooking.dom.floorPlan = element.querySelector(select.widgets.booking.floorPlan);
-    thisBooking.dom.form = element.querySelector(select.widgets.booking.form);
-    thisBooking.dom.phone = thisBooking.dom.form.querySelectorAll(select.widgets.booking.phone);
-    thisBooking.dom.address = thisBooking.dom.form.querySelector(select.widgets.booking.address);
-    thisBooking.dom.starters = thisBooking.dom.form.querySelectorAll(select.widgets.booking.starters);
+    thisBooking.dom.tables = element.querySelectorAll(select.booking.tables);
+    thisBooking.dom.floorPlan = element.querySelector(select.booking.floorPlan);
+    thisBooking.dom.form = element.querySelector(select.booking.form);
+    thisBooking.dom.phone = thisBooking.dom.form.querySelectorAll(select.booking.phone);
+    thisBooking.dom.address = thisBooking.dom.form.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.form.querySelectorAll(select.booking.starters);
 
 
   }
@@ -284,6 +283,18 @@ class Booking {
       payload.duration,
       payload.table
     );
+  }
+
+  send(url, payload) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+
+    fetch(url, options);
   }
 
 }
