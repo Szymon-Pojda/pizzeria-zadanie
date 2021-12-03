@@ -76,8 +76,8 @@ class CartProduct {
     product.price = thisCartProduct.price;
     product.params = thisCartProduct.params;
 
-    console.log(thisCartProduct);
-    console.log(product);
+    //console.log(thisCartProduct);
+    //console.log(product);
 
     return product;
   }
