@@ -11,6 +11,7 @@
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="vendor/flickity.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -77,115 +78,117 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
-
+  <!-- home -->
   <script id="template-home-page" type="text/x-handlebars-template">
-    <div class="home-widget">
-      <div class="head">
-        <div class="order-online">
-          <a href="#order">
-            <h2>ORDER ONLINE</h2>
-            <p class="text-animation">Delicious food delivered to your door</p>
-          </a>
+    <div class="container home__container">
+        <div class="home__header">
+          <div class= "row tiles">
+            <div class="tile flex-1 img-1">
+              <a href="#order">Order Online</a>
+              <p>Delicious food delivered to your door</p>
+            </div>
+            <div class="tile flex-1 img-2">
+              <a href="#booking">Book a Table</a>
+              <p>Enjoy a meal with friends and family</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="opening-hours flex-1 col">
+              <h2>Opening Hours</h2>
+              <p>MON - SUN, 12PM - 11PM</p>
+            </div>
+          </div>
         </div>
-        <div class="book-table">
-          <a href="#book">
-            <h2>BOOK TABLE</h2>
-            <p class="text-animation">Book a table</p>
-          </a>
-        </div>
-      </div>
-      <div class="hour">
-        <h2 class="opening">OPENING HOURS:</h2>
-        <h3 class="days">TUE-SUN, 12PM-12AM</h3>
-      </div>
-    </div>
-    <div class="main-carousel">
-      <div class="carousel-cell">
-        <img class="carousel-image" src="images/home/pizza-3.jpg">
-        <div class="carousel-text">
-          <h3>AMAZING SERVICE</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> 
-             Integer vitae ullamcorper odio. In sed neque accumsan, varius lorem eu,<br>
-             dignissim felis. Nulla facilisi. Vestibulum sed.
-             <br>
-             <br>-Margaret Osborne</p>
-        </div>
-      </div>
-      <div class="carousel-cell">
-        <img class="carousel-image" src="images/home/pizza-3.jpg">
-        <div class="carousel-text">
-          <h3>AMAZING CAR-PARK</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> 
-             Integer vitae ullamcorper odio. In sed neque accumsan, varius lorem eu,<br>
-             dignissim felis. Nulla facilisi. Vestibulum sed.
-             <br>
-             <br>-Jeremy Clarkson</p>
-        </div>
-      </div>
-      <div class="carousel-cell">
-        <img class="carousel-image" src="images/home/pizza-3.jpg">
-        <div class="carousel-text">
-          <h3>AMAZING PRICE</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> 
-             Integer vitae ullamcorper odio. In sed neque accumsan, varius lorem eu,<br>
-             dignissim felis. Nulla facilisi. Vestibulum sed.
-             <br>
-             <br>-Richard Hamond</p>
-        </div>
-      </div>
-    </div>
-    <div class="gallery">
-      <div class="box">
-        <img src="images/home/pizza-4.jpg">
-        <ul class="icons">
-          <li><a><i class="fas fa-heart"></i></a></li>
-          <li><a><i class="fas fa-share-alt"></i></a></li>
-        </ul>
-      </div>
-      <div class="box">
-        <img src="images/home/pizza-5.jpg">
-        <ul class="icons">
-          <li><a><i class="fas fa-heart"></i></a></li>
-          <li><a><i class="fas fa-share-alt"></i></a></li>
-        </ul>
-      </div>
-      <div class="box">
-        <img src="images/home/pizza-6.jpg">
-        <ul class="icons">
-          <li><a><i class="fas fa-heart"></i></a></li>
-          <li><a><i class="fas fa-share-alt"></i></a></li>
-        </ul>
-      </div>
-      <div class="box">
-        <img src="images/home/pizza-7.jpg">
-        <ul class="icons">
-          <li><a><i class="fas fa-heart"></i></a></li>
-          <li><a><i class="fas fa-share-alt"></i></a></li>
-        </ul>
-      </div>
-      <div class="box">
-        <img src="images/home/pizza-8.jpg">
-        <ul class="icons">
-          <li><a><i class="fas fa-heart"></i></a></li>
-          <li><a><i class="fas fa-share-alt"></i></a></li>
-        </ul>
-      </div>
-      <div class="box">
-        <img src="images/home/pizza-9.jpg">
-        <ul class="icons">
-          <li><a><i class="fas fa-heart"></i></a></li>
-          <li><a><i class="fas fa-share-alt"></i></a></li>
-        </ul>
-      </div>
-    </div>
-    <fotter>
-      <div class="fotter">
-        <a class="insta" href="#">Viev more on Instagram</a>
-      </div>
-    </fotter>
-  </script>
 
-  <script id="template-cart-product" type="text/x-handlebars-template">
+        <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+          <div class="carousel-cell row">
+            <div class="carousel-img">
+              <img src="images/home/pizza-3.jpg" alt="">
+            </div>
+            <div class="carousel-quote col">
+              <h3>Great venue!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sapien faucibus et molestie ac.
+              </p>
+              <p>- Margaret Osborne</p>
+            </div>
+          </div>
+          <div class="carousel-cell row">
+            <div class="carousel-img">
+              <img src="images/home/pizza-3.jpg" alt="">
+            </div>
+            <div class="carousel-quote col">
+              <h3>Best services!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sapien faucibus et molestie ac.
+              </p>
+              <p>- Jeremy Clarkson</p>
+            </div>
+          </div>
+          <div class="carousel-cell row">
+            <div class="carousel-img">
+              <img src="images/home/pizza-3.jpg" alt="">
+            </div>
+            <div class="carousel-quote col">
+              <h3>Good snacks!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sapien faucibus et molestie ac.
+              </p>
+              <p>- Richard Hammond</p>
+            </div>
+          </div>
+          <div class="carousel-cell row">
+            <div class="carousel-img">
+              <img src="images/home/pizza-3.jpg" alt="">
+            </div>
+            <div class="carousel-quote col">
+              <h3>Amazing food!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sapien faucibus et molestie ac.
+              </p>
+              <p>- James May</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="row">
+            <div class="element flex-1 img-4">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-5">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-6">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="element flex-1 img-7">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-8">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-9">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <a href="#">View more on Intagram</a>
+        </div>
+      </div>
+    </script>
+    <!-- home end -->
+    <script id="template-cart-product" type="text/x-handlebars-template">
         <li>
             <div class="widget-amount">
                 <!-- widget-amount -->
@@ -214,7 +217,7 @@
         </li>
     </script>
 
-  <script id="template-menu-product" type="text/x-handlebars-template">
+    <script id="template-menu-product" type="text/x-handlebars-template">
         <article class="product">
             <!-- product -->
 
@@ -302,12 +305,12 @@
         <!-- .product -->
     </script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="vendor/range-slider.min.js"></script>
-  <script src="vendor/flickity.pkgd.min.js"></script>
-  <script src="js/app.js" type="module"></script>
-  <script id="template-booking-widget" type="text/x-handlebars-template">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="vendor/range-slider.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="js/app.js" type="module"></script>
+    <script id="template-booking-widget" type="text/x-handlebars-template">
         <div class="booking-widget">
           <h2 class="page__title no-spacing">Book a table</h2>
           <form class="booking-form">
