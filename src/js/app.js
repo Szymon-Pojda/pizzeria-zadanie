@@ -12,6 +12,8 @@ const app = {
 
     thisApp.navLinks = document.querySelectorAll(select.widgets.nav.links);
 
+    thisApp.navHome = document.querySelectorAll(select.widgets.nav.links);
+
     const idFromHash = window.location.hash.replace('#/', '');
     //console.log('idFromHash', idFromHash);
 
@@ -44,6 +46,23 @@ const app = {
       });
     }
 
+    for (let link of thisApp.navHome) {
+      link.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+
+        /* get page id from href attribute */
+        const id = clickedElement.getAttribute('href').replace('#', '');
+
+
+        /* run thisApp.activatePage with that id */
+        thisApp.activetePage(id);
+        /* change URL hash*/
+        window.location.hash = '#/' + id;
+
+      });
+    }
+
   },
 
   activetePage: function (pageId) {
@@ -62,6 +81,13 @@ const app = {
 
     /* add class "active" tomatching links, remove from non-matching */
     for (let link of thisApp.navLinks) {
+      link.classList.toggle(
+        classNames.nav.active,
+        link.getAttribute('href') == '#' + pageId
+      );
+    }
+
+    for (let link of thisApp.navHome) {
       link.classList.toggle(
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
