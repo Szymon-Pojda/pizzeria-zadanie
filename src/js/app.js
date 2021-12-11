@@ -10,9 +10,9 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
 
-    thisApp.navLinks = document.querySelectorAll(select.widgets.nav.links);
+    thisApp.navLinks = document.querySelectorAll(select.widgets.nav.home);
 
-    thisApp.navHome = document.querySelectorAll(select.widgets.nav.links);
+    thisApp.Home = document.querySelectorAll(select.widgets.nav.links);
 
     const idFromHash = window.location.hash.replace('#/', '');
     //console.log('idFromHash', idFromHash);
@@ -46,7 +46,7 @@ const app = {
       });
     }
 
-    for (let link of thisApp.navHome) {
+    for (let link of thisApp.Home) {
       link.addEventListener('click', function (event) {
         const clickedElement = this;
         event.preventDefault();
@@ -87,7 +87,7 @@ const app = {
       );
     }
 
-    for (let link of thisApp.navHome) {
+    for (let link of thisApp.Home) {
       link.classList.toggle(
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
