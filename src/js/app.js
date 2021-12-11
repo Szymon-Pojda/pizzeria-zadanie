@@ -10,7 +10,7 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
 
-    thisApp.navLinks = document.querySelectorAll(select.widgets.nav.home);
+    thisApp.navLinks = document.querySelectorAll(select.widgets.nav.links);
 
     thisApp.Home = document.querySelectorAll(select.widgets.nav.links);
 
